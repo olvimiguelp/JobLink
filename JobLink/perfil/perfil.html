@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadatos básicos y configuración inicial -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../imagen/logo.jpg" />
+    <title>JobLink</title>
+    <!-- Enlace al archivo de estilos -->
+    <link rel="stylesheet" href="perfil.css" />
+</head>
+<body>
+    <!-- Barra de navegación principal -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <!-- Logo y caja de búsqueda -->
+            <a href="../Interfaz/interfaz.html" class="logo">
+                <img src="../imagen/logo.jpg" alt="Logo" />
+            </a>
+            <div class="search-box">
+                <img src="../imagen/search.png" alt="Buscar" />
+                <input type="text" placeholder="Búsqueda" />
+            </div>
+        </div>
+        <div class="navbar-center">
+            <!-- Menú de navegación central -->
+            <ul>
+                <li>
+                    <a href="#" class="active-link">
+                        <img src="../imagen/jobs.png" alt="Empleos" />
+                        <span>Empleos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="../imagen/message.png" alt="Mensajes" />
+                        <span>Mensajes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="../imagen/notification.png" alt="Notificaciones" />
+                        <span>Notificaciones</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <!-- Imagen de perfil -->
+            <div>
+                <img src="../imagen/Secciones.jpeg" class="nav-profile-img" alt="Perfil" />
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenedor principal -->
+    <div class="container">
+        <!-- Sección principal del perfil -->
+        <div class="profile-main">
+            <!-- Encabezado del perfil con banner y botones -->
+            <div class="profile-container">
+                <div class="profile-container-inner">
+                    <div class="cover-photo" id="coverPhoto">
+                        <button class="camera-icon" onclick="openPopup('cover')">📷</button>
+                    </div>
+
+  
+  <div class="profile-section">
+    <div class="profile-pic" onclick="openPopup('profile')">
+        <img id="profile-img" src="default-profile.png" alt="Profile Picture">
+    </div>
+    <button class="edit-pencil" onclick="toggleEditPopup()">
+        <img src="../imagen/lapiz.avif" alt="Editar" />
+    </button>
+
+      <h1 class="profile-name">olvin miguelp</h1>
+      <p class="profile-headline">programador</p>
+      
+      <!-- Intereses del perfil -->
+      <div class="interest-section">
+          <span class="add-interest">Añadir interés</span>
+          <span class="interest-tag">promacion</span>
+          <span class="interest-tag">full-stack</span>
+      </div>
+  </div>
+                    <div class="profile-btn">
+                        <a href="#" class="primary-btn">
+                            <img src="../imagen/connect.png" alt="Conectar" />Agregar
+                        </a>
+                        <a href="#">
+                            <img src="../imagen/chat.png" alt="Chat" />Enviar mensaje
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Descripciones del perfil -->
+            <div class="profile-description">
+                <div class="card">
+                    <div class="about-section">
+                        <div class="about-content" id="aboutContent">
+                            <p class="about-text" id="aboutText">holafgh</p>
+                            <button class="edit-btn" onclick="showEdit()">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="edit-container" id="editContainer">
+                            <textarea id="aboutTextarea"></textarea>
+                            <div class="buttons-container">
+                                <button class="button button-secondary" onclick="cancelEdit()">Cancelar</button>
+                                <button class="button button-primary" onclick="saveEdit()">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-description">
+                <h2 class="section-title">Experiencia</h2>
+                <div class="profile-desc-row">  
+                    <div id="experienceSectionDisplay"></div>
+                </div>
+            </div>
+
+            <div class="profile-description">
+                <h2 class="section-title">Educación</h2>
+                <div class="profile-desc-row">
+                    <div id="educationSectionDisplay"></div>
+                </div>
+            </div>
+
+            <!-- Otras secciones del perfil -->
+            <div class="profile-description">
+                <h2 class="section-title">Habilidades</h2>
+                <div id="skillsSectionDisplay"></div>
+            </div>
+            <div class="profile-description">
+                <h2 class="section-title">Idiomas</h2>
+                <div id="languagesSectionDisplay"></div>
+            </div>
+        </div>
+
+        <!-- Barra lateral con anuncios y sugerencias -->
+        <div class="profile-sidebar">
+            <div class="sidebar-ad">
+                <p>Otras redes</p>
+                <div>
+                    <img src="../imagen/Secciones.jpeg" alt="Anuncio" />
+                </div>
+                <a href="#" class="ad-link">Más información</a>
+            </div>
+            <div class="sidebar-people">
+                <h3>xxxxxxx</h3>
+                <div class="sidebar-people-row">
+                    <!-- Personas sugeridas -->
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Botón para abrir el popup de edición -->
+
+        <!-- Popup de edición -->
+        <div id="editPopup" class="popup">
+            <div class="popup-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="card-title">Editar información del perfil</h1>
+                    </div>
+                    <div class="card-content">
+                        <!-- Sección de Experiencia -->
+                        <div class="section" id="experienceSection">
+                            <div class="section-header">
+                                <h2 class="section-title">Experiencia</h2>
+                                <button class="button button-outline" onclick="addExperience()">
+                                    Agregar Experiencia
+                                </button>
+                            </div>
+                            <div id="experienceEntries"></div>
+                        </div>
+    
+                        <!-- Sección de Educación -->
+                        <div class="section" id="educationSection">
+                            <div class="section-header">
+                                <h2 class="section-title">Educación</h2>
+                                <button class="button button-outline" onclick="addEducation()">
+                                    Agregar Educación
+                                </button>
+                            </div>
+                            <div id="educationEntries"></div>
+                        </div>
+    
+                        <!-- Sección de Habilidades -->
+                        <div class="section">
+                            <div class="section-header">
+                                <h2 class="section-title">Habilidades</h2>
+                            </div>
+                            <div class="skills-container" id="skillsContainer"></div>
+                            <div class="input-container">
+                                <div class="input-row">
+                                    <input type="text" id="skillInput" placeholder="Agregar nueva habilidad">
+                                    <button class="button" onclick="addSkill()">Agregar</button>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Sección de Idiomas -->
+                        <div class="section">
+                            <div class="section-header">
+                                <h2 class="section-title">Idiomas</h2>
+                            </div>
+                            <div class="languages-container" id="languagesContainer"></div>
+                            <div class="input-container">
+                                <div class="input-row">
+                                    <input type="text" id="languageInput" placeholder="Agregar nuevo idioma">
+                                    <button class="button" onclick="addLanguage()">Agregar</button>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Botones de acción -->
+                        <div class="buttons-container">
+                            <button class="button button-outline" onclick="closeEditPopup()">Cerrar</button>
+                            <button class="button button-primary" onclick="saveEditPopup()">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+            <!-- Image Upload Popup -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h3>Sube una imagen</h3>
+            <p id="image-type">Selecciona una imagen para actualizar.</p>
+            <input type="file" id="fileInput" accept="image/*">
+            <div class="popup-buttons">
+                <button id="uploadBtn" disabled>Subir</button>
+                <button id="closeBtn" class="close-btn">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+        <script src="perfil.js"></script>
+</body>
+</html>

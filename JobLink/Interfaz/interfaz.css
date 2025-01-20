@@ -1,0 +1,263 @@
+/* Reset básico para márgenes y tamaños */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    padding: 6px 6%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    width: 50px;
+    margin-right: 50px;
+    display: block;
+}
+
+.navbar-center ul li {
+    display: inline-block;
+    list-style: none;
+}
+
+.navbar-center ul li a {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin: 5px 8px;
+    padding-right: 5px;
+    position: relative;
+}
+
+.navbar-center ul li a img {
+    width: 30px;
+}
+.navbar-center ul li a.active-link::after {
+    width: 100%;
+
+}
+
+
+.nav-profile-img {
+    width: 40px;
+    border-radius: 50%;
+    display: block;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Estilo general del cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+    background-color: #f8f9fa;
+}
+
+/* Contenedor principal que organiza la barra lateral y el contenido */
+.container {
+    display: flex;
+    width: 100%;
+}
+/* Estilo de la barra lateral */
+.sidebar {
+    width: 300px;
+    height: 100vh;
+    background-color: #ffffff;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+    transition: width 0.3s ease;
+}
+
+.sidebar .logo-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.sidebar .logo {
+    background: url('../imagen/logo.jpg') no-repeat center center;
+    background-size: cover; /* Asegura que el logo cubra todo el círculo */
+    margin-right: -4px;
+    width: 70px; /* Tamaño del logo */
+    height: 70px; /* Tamaño del logo */
+    border-radius: 50%; /* Hace que el logo sea un círculo perfecto */
+    overflow: hidden; /* Asegura que la imagen no sobresalga del círculo */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+    left: 25px;
+}
+
+/* Efecto cuando se pasa el cursor por encima */
+.sidebar .logo:hover {
+    transform: translateZ(10px); /* Mueve el logo hacia adelante */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Sombra para resaltar el logo */
+}
+
+
+.sidebar .title {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.sidebar .create-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px 0 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.sidebar .create-button:hover {
+    background-color: #444;
+}
+
+.sidebar .nav-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 5px;
+    color: #555;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.sidebar .nav-item:hover {
+    background-color: #f0f0f0;
+}
+.sidebar .nav-item i {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.sidebar.collapsed {
+    width: 70px;
+}
+
+.sidebar.collapsed .title,
+.sidebar.collapsed .create-button,
+.sidebar.collapsed .nav-item span {
+    display: none;
+}
+
+.sidebar.collapsed .nav-item i {
+    margin-right: 0;
+    text-align: center;
+    width: 100%;
+}
+/* Barra de búsqueda en el contenido principal */
+.search-bar {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+/* Menú de la barra lateral */
+.menu {
+    list-style: none;
+}
+
+.menu li {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+}
+
+.menu li:hover {
+    font-weight: bold;
+}
+
+/* Contenido principal */
+.content {
+    flex: 1;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Encabezado con botones e icono de perfil */
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Estilo de los botones */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn.blue {
+    background-color: #007bff;
+}
+
+.btn.green {
+    background-color: #28a745;
+}
+
+/* Icono de perfil */
+.profile-icon {
+    background: url('../imagen/Secciones.jpeg') no-repeat center center;
+    overflow: hidden;
+    background-size: cover;
+    width: 65px;
+    height: 50px;
+    border-radius: 50px;
+    box-shadow: 0 25.6px 57.6px 0 rgb(0 0 0 / 22%), 0 4.8px 14.4px 0 rgb(0 0 0 / 18%);
+}
+
+/* Estilos de las tarjetas */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-weight: bold;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
