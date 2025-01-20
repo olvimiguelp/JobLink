@@ -15,6 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Redirige a otra página cuando se hace clic en "Acceso"
     accesoBtn.addEventListener('click', () => {
-        window.location.href = './Interfaz/index.html'; // Cambia 'otra-pagina.html' por la URL deseada
+        window.location.href = './Interfaz/interfaz.html'; // Cambia 'otra-pagina.html' por la URL deseada
     });
 });
