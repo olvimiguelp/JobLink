@@ -63,8 +63,6 @@
                     <div class="cover-photo" id="coverPhoto">
                         <button class="camera-icon" onclick="openPopup('cover')">📷</button>
                     </div>
-
-  
   <div class="profile-section">
     <div class="profile-pic" onclick="openPopup('profile')">
         <img id="profile-img" src="default-profile.png" alt="Profile Picture">
@@ -72,16 +70,24 @@
     <button class="edit-pencil" onclick="toggleEditPopup()">
         <img src="../imagen/lapiz.avif" alt="Editar" />
     </button>
-
-      <h1 class="profile-name">olvin miguelp</h1>
-      <p class="profile-headline">programador</p>
+    <h1 class="profile-name">Olvin Miguelp</h1>
+    <p class="profile-headline">Programador</p>
       
       <!-- Intereses del perfil -->
-      <div class="interest-section">
-          <span class="add-interest">Añadir interés</span>
-          <span class="interest-tag">promacion</span>
-          <span class="interest-tag">full-stack</span>
-      </div>
+      
+        <div class="interest-section">
+            <button id="addInterestBtn" class="add-interest">Añadir interés</button>
+            <div id="interestTags"></div>
+        </div>
+    
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <h2>Añadir o eliminar intereses</h2>
+                <input type="text" id="newInterest" placeholder="Nuevo interés">
+                <button id="saveInterest">Guardar</button>
+                <div id="currentInterests"></div>
+            </div>
+        </div>
   </div>
                     <div class="profile-btn">
                         <a href="#" class="primary-btn">
@@ -99,7 +105,7 @@
                 <div class="card">
                     <div class="about-section">
                         <div class="about-content" id="aboutContent">
-                            <p class="about-text" id="aboutText">holafgh</p>
+                            <p class="about-text" id="aboutText"></p>
                             <button class="edit-btn" onclick="showEdit()">
                                 <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -168,6 +174,15 @@
                     <div class="card-header">
                         <h1 class="card-title">Editar información del perfil</h1>
                     </div>
+                 <!-- Nueva sección para editar nombre y titular -->
+                <div class="section">
+                    <h2 class="section-title">Información básica</h2>
+                    <div class="input-container">
+                        <input type="text" id="profileNameInput" placeholder="Nombre">
+                        <input type="text" id="profileHeadlineInput" placeholder="Titular">
+                    </div>
+                </div>
+                </div>
                     <div class="card-content">
                         <!-- Sección de Experiencia -->
                         <div class="section" id="experienceSection">
