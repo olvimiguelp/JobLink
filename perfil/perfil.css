@@ -2,16 +2,14 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'poppins', sans-serif;
+  font-family: "poppins", sans-serif;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
 }
 
 /* Configuración del fondo y color de texto del cuerpo */
 body {
   background: #f0f2f5;
   color: #5f5f5f;
-  font-family: Arial, sans-serif;
 }
 
 /* Estilo para todos los enlaces */
@@ -25,7 +23,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #ffffff;
+  background: #fff;
   padding: 6px 6%;
   position: sticky;
   top: 0;
@@ -45,6 +43,12 @@ a {
   display: inline-block;
   list-style: none;
 }
+.navbar-center ul li a img {
+  width: 20px;
+}
+.navbar-center ul li a span {
+  margin-left: 8px;
+}
 
 .navbar-center ul li a {
   display: flex;
@@ -53,6 +57,8 @@ a {
   margin: 5px 8px;
   padding-right: 5px;
   position: relative;
+  text-decoration: none;
+  color: #333;
 }
 
 .navbar-center ul li a img {
@@ -98,7 +104,121 @@ a {
   outline: none;
   border: 0;
 }
+/* Estilos del Panel de Notificaciones */
+.notifications-panel {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 380px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 5px;
+}
 
+.notifications-header {
+  padding: 16px;
+  border-bottom: 1px solid #e4e6eb;
+}
+
+.notifications-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 8px;
+  gap: 8px;
+  background-color: #f0f2f5;
+}
+
+.tab-btn {
+  padding: 8px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 4px;
+  color: #65676b;
+}
+
+.tab-btn.active {
+  background-color: white;
+  color: #1b74e4;
+}
+
+.notifications-content {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.notification-item {
+  display: flex;
+  padding: 12px;
+  gap: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.notification-item:hover {
+  background-color: #f0f2f5;
+}
+
+.notification-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.notification-details {
+  flex: 1;
+}
+
+.notification-text {
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: #1a1a1a;
+}
+
+.notification-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #65676b;
+}
+
+.unread-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #1b74e4;
+  border-radius: 50%;
+}
+
+.ver-todo {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background: none;
+  color: #65676b;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.ver-todo:hover {
+  background-color: #f0f2f5;
+}
+
+/* Mostrar el panel cuando el elemento padre tiene la clase show */
+#notifications-toggle.show .notifications-panel {
+  display: block;
+}
 /* Diseño del contenedor principal */
 .container {
   padding: 20px 6%;
@@ -119,7 +239,6 @@ a {
   border: 1px solid rgba(0, 0, 0, 0.15);
   overflow: hidden;
   text-decoration: none;
-  
 }
 
 .profile-container-inner {
@@ -174,7 +293,6 @@ a {
   border-radius: 50px;
   padding: 6px 10px;
   text-decoration: none;
-
 }
 
 /* Estilo de la sección de descripción del perfil */
@@ -283,14 +401,10 @@ a {
   height: 200px;
   background: #a78112;
   position: relative;
-  border-radius: 0; /* Eliminar bordes redondeados */
-  width: 111%; /* Asegurarte de que ocupe todo el ancho */
-  border-radius: 0; /* Eliminar bordes redondeados */
-  margin-left: -50px; /* Mueve hacia la derecha 50px */
+  width: 111%;
+  margin-left: -50px;
   margin-top: 0px;
-  
 }
-
 
 .camera-icon {
   position: absolute;
@@ -364,7 +478,7 @@ a {
   display: inline-block;
   margin: 5px;
 }
-.modal {
+.modalo {
   display: none;
   position: fixed;
   z-index: 1;
@@ -376,7 +490,7 @@ a {
   border-radius: 50px;
 }
 
-.modal-content {
+.modal-contento {
   background-color: #d3d3d3;
   margin: 15% auto;
   padding: 20px;
@@ -405,7 +519,6 @@ a {
   border-radius: 50%;
   cursor: pointer;
   margin-left: 5px;
-
 }
 /* ventana pop*/
 /* Estilos base del popup */
@@ -563,12 +676,12 @@ a {
 /* Animación de entrada */
 @keyframes slideIn {
   from {
-      transform: translateY(-20px);
-      opacity: 0;
+    transform: translateY(-20px);
+    opacity: 0;
   }
   to {
-      transform: translateY(0);
-      opacity: 1;
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
@@ -586,24 +699,23 @@ a {
 /* Responsive */
 @media (max-width: 768px) {
   .popup#editPopup .popup-content {
-      padding: 1.5rem;
-      width: 95%;
+    padding: 1.5rem;
+    width: 95%;
   }
-  
+
   .popup#editPopup h3 {
-      font-size: 1.25rem;
+    font-size: 1.25rem;
   }
-  
+
   .popup#editPopup button {
-      padding: 0.6rem 1.2rem;
+    padding: 0.6rem 1.2rem;
   }
-  
+
   .popup#editPopup .popup-buttons {
-      flex-direction: column;
-      gap: 0.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 }
-
 
 .edit-pencil {
   position: absolute; /* Ubicación absoluta */
@@ -623,7 +735,6 @@ a {
   height: 16px;
   object-fit: cover;
 }
-
 
 .popup {
   position: fixed;
@@ -683,14 +794,12 @@ a {
   background-color: #dc3545;
 }
 
-
-
 .card {
   background: white;
   max-width: 800px;
   margin: 0 auto 20px;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   padding: 24px;
 }
 
@@ -778,7 +887,6 @@ textarea {
 textarea:focus {
   outline: none;
   border-color: #2563eb;
-  ring: 2px solid #93c5fd;
 }
 
 .buttons-container {
@@ -824,14 +932,16 @@ textarea:focus {
   border-bottom: none;
 }
 
-.skills-container, .languages-container {
+.skills-container,
+.languages-container {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 12px;
 }
 
-.skill-item, .language-item {
+.skill-item,
+.language-item {
   display: flex;
   align-items: center;
   background-color: #f3f4f6;
@@ -873,7 +983,6 @@ input {
 input:focus {
   outline: none;
   border-color: #2563eb;
-  ring: 2px solid #93c5fd;
 }
 
 .card-header {
@@ -931,4 +1040,343 @@ label {
 .trash-icon {
   width: 16px;
   height: 16px;
+}
+
+.perfil {
+  position: relative;
+  display: inline-block;
+}
+.perfil img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  width: 150px;
+}
+.menu a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+}
+.menu a:hover {
+  background: #f0f0f0;
+}
+.notification-popup {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 5px;
+  display: none;
+  z-index: 1000;
+}
+
+.fixed-container {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 1000;
+}
+.compose-btn {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background-color: #2d2d2d;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+.compose-btn:hover {
+  background-color: #3a3a3a;
+}
+
+/* Estilos para el modal (diálogo) */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal.hidden {
+  display: none;
+}
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  position: fixed;
+  bottom: 0;
+  right: 1rem;
+  margin: 0;
+  width: 100%;
+  max-width: 400px;
+  bottom: 0;
+  right: 1rem;
+  margin: 0;
+  width: 100%;
+  max-width: 400px;
+  background-color: #1a1a1a;
+  border: 1px solid #2d2d2d;
+  border-radius: 8px 8px 0 0;
+  padding: 1rem;
+  z-index: 2100;
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Estilos del modal de composición de mensaje */
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+.modal-body {
+  margin-top: 1rem;
+}
+.modal-body label {
+  display: block;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+.modal-body input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: transparent;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: white;
+}
+.scroll-area {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 1rem;
+}
+.friend-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.friend-button:hover {
+  background-color: #2d2d2d;
+}
+.friend-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+/* Estilos del modal de chat */
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #2d2d2d;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+.chat-header .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 0.5rem;
+}
+.chat-header .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.chat-info .friend-name {
+  font-weight: bold;
+}
+.chat-info .friend-status,
+.chat-info .friend-location {
+  font-size: 0.75rem;
+  color: #aaa;
+}
+.chat-body {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.chat-body input[type="text"] {
+  flex: 1;
+  padding: 0.5rem;
+  background-color: transparent;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: white;
+}
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* Contenedor principal del chat */
+.chat-interface {
+  width: 100%;
+  max-width: 400px;
+  background-color: #242526;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Área de mensajes */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.message-bubble {
+  background-color: #2563eb;
+  border-radius: 16px;
+  padding: 8px 16px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+.message-timestamp {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+/* Barra inferior (toolbar) */
+.bottom-toolbar {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.bottom-toolbar .icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.bottom-toolbar .icon-btn:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+  border-radius: 4px;
+}
+.bottom-toolbar input {
+  flex: 1;
+  background-color: #3a3b3c;
+  border: none;
+  border-radius: 9999px;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: white;
+}
+.bottom-toolbar input:focus {
+  outline: none;
+}
+
+/* Estilos para el botón de enviar según el contenido */
+.active-send {
+  color: #3b82f6;
+}
+.inactive-send {
+  color: #6b7280;
+}
+
+/* Added styles for input wrapper and icons */
+.input-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper input {
+  padding-left: 40px;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  color: #6b7280;
+}
+
+.send-btn {
+  color: #3b82f6;
+  transition: transform 0.2s;
+}
+
+.send-btn:hover {
+  transform: translateX(2px);
+}
+
+.send-btn:active {
+  transform: translateX(4px);
+}
+
+/* Update modal styles for bottom positioning */
+.modal-content {
+  position: fixed;
+  bottom: 0;
+  right: 1rem;
+  margin: 0;
+  max-width: 400px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Add styles for the compose button visibility */
+.compose-btn.hidden {
+  display: none;
 }

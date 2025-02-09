@@ -8,6 +8,7 @@
     <title>JobLink</title>
     <!-- Enlace al archivo de estilos -->
     <link rel="stylesheet" href="perfil.css" />
+    <link rel="stylesheet" href="../perfil/botones/styles.css" />
 </head>
 <body>
     <!-- Barra de navegación principal -->
@@ -37,19 +38,52 @@
                         <span>Mensajes</span>
                     </a>
                 </li>
-                <li>
+                <li id="notifications-toggle">
                     <a href="#">
-                        <img src="../imagen/notification.png" alt="Notificaciones" />
+                        <img src="../imagen/notification.png" alt="Notificaciones">
                         <span>Notificaciones</span>
                     </a>
+                    
+                    <!-- Panel de Notificaciones -->
+                    <div class="notifications-panel" id="notificationsPanel">
+                        <div class="notifications-header">
+                            <h2>Notificaciones</h2>
+                        </div>
+                        
+                        <div class="tabs">
+                            <button class="tab-btn active" data-tab="todas">Todas</button>
+                            <button class="tab-btn" data-tab="no-leidas">No leídas</button>
+                        </div>
+                        
+                        <div class="notifications-content" id="todas">
+                            <div class="notifications-list">
+                                <!-- Las notificaciones se cargarán aquí dinámicamente -->
+                            </div>
+                            <button class="ver-todo">Ver todo</button>
+                        </div>
+                        
+                        <div class="notifications-content" id="no-leidas" style="display: none;">
+                            <div class="notifications-list">
+                                <!-- Las notificaciones no leídas se cargarán aquí -->
+                            </div>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
         <div class="navbar-right">
             <!-- Imagen de perfil -->
             <div>
-                <img src="../imagen/Secciones.jpeg" class="nav-profile-img" alt="Perfil" />
+                <img src="../imagen/Secciones.jpeg" class="nav-profile-img" alt="Perfil " onclick="toggleMenu()"/>
+                <div class="menu" id="menuPerfil">
+                    <div class="radio-btn" onclick="toggleDarkMode()">
+                        <div class="radio-inner"></div>
+                    </div>
+                    <a href="#">Configuración</a>
+                    <a href="#">Cerrar Sesión</a>
+                </div>
             </div>
+    
         </div>
     </nav>
 
@@ -65,10 +99,12 @@
                     </div>
   <div class="profile-section">
     <div class="profile-pic" onclick="openPopup('profile')">
-        <img id="profile-img" src="default-profile.png" alt="Profile Picture">
+        <img id="profile-img" src="../imagen/Secciones.jpeg" alt="Profile Picture">
     </div>
     <button class="edit-pencil" onclick="toggleEditPopup()">
-        <img src="../imagen/lapiz.avif" alt="Editar" />
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="15" height="15">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4H6a2 2 0 00-2 2v12a2 2 2 0 002 2h12a2 2 0 002-2v-5M18.5 2.5a2.121 2.121 0 113 3L12 15l-4 1 1-4 9.5-9.5z" />
+          </svg>
     </button>
     <h1 class="profile-name">Olvin Miguelp</h1>
     <p class="profile-headline">Programador</p>
@@ -80,8 +116,8 @@
             <div id="interestTags"></div>
         </div>
     
-        <div id="modal" class="modal">
-            <div class="modal-content">
+        <div id="modal" class="modalo">
+            <div class="modal-contento">
                 <h2>Añadir o eliminar intereses</h2>
                 <input type="text" id="newInterest" placeholder="Nuevo interés">
                 <button id="saveInterest">Guardar</button>
@@ -105,12 +141,10 @@
                 <div class="card">
                     <div class="about-section">
                         <div class="about-content" id="aboutContent">
-                            <p class="about-text" id="aboutText"></p>
-                            <button class="edit-btn" onclick="showEdit()">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                </svg>
-                            </button>
+                            <p class="about-text" id="aboutText">Algo sobre mi</p>
+                            <button class="edit-btn" onclick="showEdit()">    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="15" height="15">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4H6a2 2 0 00-2 2v12a2 2 2 0 002 2h12a2 2 0 002-2v-5M18.5 2.5a2.121 2.121 0 113 3L12 15l-4 1 1-4 9.5-9.5z" />
+                              </svg></button>
                         </div>
                         <div class="edit-container" id="editContainer">
                             <textarea id="aboutTextarea"></textarea>
@@ -257,9 +291,89 @@
             </div>
         </div>
     </div>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+   <!-- Botón flotante para abrir el diálogo de "Nuevo mensaje" -->
+   <div class="fixed-container">
+    <button id="compose-btn" class="compose-btn" title="Nuevo mensaje">
+      <!-- Ícono de editar (lápiz) en SVG -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5M18.5 2.5a2.121 2.121 0 113 3L12 15l-4 1 1-4 9.5-9.5z" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Modal para seleccionar amigo (Nuevo mensaje) -->
+  <div id="compose-modal" class="modal hidden">
+    <div class="modal-overlay" id="compose-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Nuevo mensaje</h2>
+        <button class="close-button" onclick="closeFriendsModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <label for="search-input">Para:</label>
+        <input type="text" id="search-input" placeholder="Buscar amigos..." />
+        <div class="scroll-area" id="friends-list">
+          <!-- Aquí se insertarán los botones con los amigos filtrados -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para el chat con el amigo seleccionado -->
+  <div id="chat-modal" class="modal hidden">
+    <div class="modal-overlay" id="chat-overlay"></div>
+    <div class="modal-content">
+      <div class="chat-interface">
+        <!-- Header -->
+        <div class="chat-header">
+          <div class="header-left">
+            <div class="avatar">
+              <img id="chat-avatar" src="https://via.placeholder.com/32" alt="YC" />
+            </div>
+            <span id="chat-friend-name">Yazmi Concepción...</span>
+          </div>
+          <div class="header-right">
+            <button class="icon-btn" title="Llamar">
+              <i data-lucide="phone" width="20" height="20"></i>
+            </button>
+            <button class="icon-btn" title="Video">
+              <i data-lucide="video" width="20" height="20"></i>
+            </button>
+            <button class="icon-btn" title="Cerrar" id="close-chat-btn">
+              <i data-lucide="x" width="20" height="20"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Área de mensajes -->
+        <div id="messagesContainer" class="chat-messages">
+          <!-- Los mensajes se insertarán dinámicamente aquí -->
+        </div>
+
+        <!-- Barra inferior -->
+        <div class="bottom-toolbar">
+          <button class="icon-btn" title="Micrófono">
+            <i data-lucide="mic" width="20" height="20"></i>
+          </button>
+          <button class="icon-btn" title="Imagen">
+            <i data-lucide="image" width="20" height="20"></i>
+          </button>
+          <div class="input-wrapper">
+            <i data-lucide="message-circle" class="input-icon" width="20" height="20"></i>
+            <input type="text" id="chatInput" placeholder="Aa" />
+          </div>
+          <button class="icon-btn send-btn" title="Enviar" id="sendButton">
+            <i data-lucide="send" width="20" height="20"></i>
+          </button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
     <script src="perfil.js"></script>
     <script src="app.js"></script>
 </body>

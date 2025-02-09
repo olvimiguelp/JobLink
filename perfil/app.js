@@ -1,6 +1,13 @@
 // Configuración de Firebase
 const firebaseConfig = {
- 
+    apiKey: "AIzaSyCFCss8GvV6UNMAE55ZWSI1bRembSopKGA",
+  authDomain: "joblink-86307.firebaseapp.com",
+  databaseURL: "https://joblink-86307-default-rtdb.firebaseio.com",
+  projectId: "joblink-86307",
+  storageBucket: "joblink-86307.firebasestorage.app",
+  messagingSenderId: "787248934984",
+  appId: "1:787248934984:web:ebe4dac6a0ba4b67f9287d",
+  measurementId: "G-Z769XPNNLP"
   };
 
 // Inicializar Firebase

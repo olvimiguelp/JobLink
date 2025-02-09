@@ -1,13 +1,13 @@
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBG_UV0FeSkAU8pzwghL3tmlMK-ceQqo2Y",
-  authDomain: "joblinkbase.firebaseapp.com",
-  databaseURL: "https://joblinkbase-default-rtdb.firebaseio.com",
-  projectId: "joblinkbase",
-  storageBucket: "joblinkbase.firebasestorage.app",
-  messagingSenderId: "982693022472",
-  appId: "1:982693022472:web:f8b431fd1ac7242c0f3abd",
-  measurementId: "G-VEGLV69L9D"
+  apiKey: "AIzaSyCFCss8GvV6UNMAE55ZWSI1bRembSopKGA",
+  authDomain: "joblink-86307.firebaseapp.com",
+  databaseURL: "https://joblink-86307-default-rtdb.firebaseio.com",
+  projectId: "joblink-86307",
+  storageBucket: "joblink-86307.firebasestorage.app",
+  messagingSenderId: "787248934984",
+  appId: "1:787248934984:web:ebe4dac6a0ba4b67f9287d",
+  measurementId: "G-Z769XPNNLP"
 };
 
 // Initialize Firebase
@@ -376,5 +376,261 @@ function saveProfileData(profileData) {
   newProfileRef.set(profileData);
 }
 
-// Initialize the profile
-initializeProfile();
+
+function toggleMenu() {
+  var menu = document.getElementById("menuPerfil")
+  menu.style.display = menu.style.display === "block" ? "none" : "block"
+}
+
+document.addEventListener("click", (event) => {
+  var perfil = document.querySelector(".perfil")
+  if (!perfil.contains(event.target)) {
+    document.getElementById("menuPerfil").style.display = "none"
+  }
+})
+function showNotificationPopup(message) {
+  var popup = document.getElementById("notificationPopup")
+  document.getElementById("notificationMessage").textContent = message
+  popup.style.display = "block"
+  setTimeout(closeNotificationPopup, 5000) // Se cierra automáticamente después de 5 segundos
+}
+
+function closeNotificationPopup() {
+  document.getElementById("notificationPopup").style.display = "none"
+}
+document.addEventListener("DOMContentLoaded", () => {
+  // Datos de ejemplo para las notificaciones
+  const notifications = [
+    {
+      id: 1,
+      avatar: "/user1.jpg",
+      name: "Melvin Desobediente",
+      action: "comentó la publicación de",
+      target: "Oración Diaria",
+      time: "1 día",
+      read: false,
+    },
+    {
+      id: 2,
+      avatar: "/user2.jpg",
+      name: "Yohandri Jesus",
+      action: "te envió una sugerencia de amistad",
+      target: "",
+      time: "7 horas",
+      read: false,
+    },
+    {
+      id: 3,
+      avatar: "/user3.jpg",
+      name: "Milagros Canela Gálvez",
+      action: "comentó la publicación de",
+      target: "Arrieche Roger",
+      time: "1 día",
+      read: false,
+    },
+  ]
+
+  // Toggle del panel de notificaciones
+  const notificationsToggle = document.getElementById("notifications-toggle")
+  const notificationsLink = notificationsToggle.querySelector("a")
+
+  notificationsLink.addEventListener("click", (e) => {
+    e.preventDefault()
+    notificationsToggle.classList.toggle("show")
+    loadNotifications() // Cargar notificaciones cuando se abre el panel
+  })
+
+  // Cerrar el panel cuando se hace clic fuera de él
+  document.addEventListener("click", (e) => {
+    if (!notificationsToggle.contains(e.target)) {
+      notificationsToggle.classList.remove("show")
+    }
+  })
+
+  // Función para crear un elemento de notificación
+  function createNotificationElement(notification) {
+    const div = document.createElement("div")
+    div.className = "notification-item"
+
+    div.innerHTML = `
+          <img src="${notification.avatar}" alt="" class="notification-avatar">
+          <div class="notification-details">
+              <p class="notification-text">
+                  <strong>${notification.name}</strong> 
+                  ${notification.action} 
+                  ${notification.target ? `<strong>${notification.target}</strong>` : ""}
+              </p>
+              <div class="notification-meta">
+                  <span>${notification.time}</span>
+                  ${!notification.read ? '<div class="unread-dot"></div>' : ""}
+              </div>
+          </div>
+      `
+
+    return div
+  }
+
+  // Función para cargar las notificaciones
+  function loadNotifications() {
+    const allNotificationsList = document.querySelector("#todas .notifications-list")
+    const unreadNotificationsList = document.querySelector("#no-leidas .notifications-list")
+
+    // Limpiar las listas
+    allNotificationsList.innerHTML = ""
+    unreadNotificationsList.innerHTML = ""
+
+    // Cargar todas las notificaciones
+    notifications.forEach((notification) => {
+      allNotificationsList.appendChild(createNotificationElement(notification))
+
+      // Si la notificación no está leída, también la añadimos a la pestaña de no leídas
+      if (!notification.read) {
+        unreadNotificationsList.appendChild(createNotificationElement(notification))
+      }
+    })
+  }
+
+  // Manejar los cambios de pestaña
+  document.querySelectorAll(".tab-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      // Remover la clase active de todos los botones
+      document.querySelectorAll(".tab-btn").forEach((btn) => {
+        btn.classList.remove("active")
+      })
+
+      // Añadir la clase active al botón clickeado
+      button.classList.add("active")
+
+      // Ocultar todos los contenidos
+      document.querySelectorAll(".notifications-content").forEach((content) => {
+        content.style.display = "none"
+      })
+
+      // Mostrar el contenido correspondiente
+      const tabId = button.getAttribute("data-tab")
+      document.getElementById(tabId).style.display = "block"
+    })
+  })
+
+  // Cargar las notificaciones inicialmente
+  loadNotifications()
+})
+// Inicializa el perfil
+initializeProfile()
+document.addEventListener("DOMContentLoaded", () => {
+  const composeBtn = document.getElementById("compose-btn");
+  const composeModal = document.getElementById("compose-modal");
+  const composeOverlay = document.getElementById("compose-overlay");
+  const chatModal = document.getElementById("chat-modal");
+  const chatOverlay = document.getElementById("chat-overlay");
+  const searchInput = document.getElementById("search-input");
+  const friendsList = document.getElementById("friends-list");
+  const chatAvatar = document.getElementById("chat-avatar");
+  const chatFriendName = document.getElementById("chat-friend-name");
+  const closeChatBtn = document.getElementById("close-chat-btn");
+  const chatInput = document.getElementById("chatInput");
+  const messagesContainer = document.getElementById("messagesContainer");
+  const sendButton = document.getElementById("sendButton");
+
+  const friends = [
+    { id: "1", name: "Jennifer Ocasio", image: "https://via.placeholder.com/40" },
+    { id: "2", name: "Laribel Jerez", image: "https://via.placeholder.com/40" }
+  ];
+
+  let selectedFriend = null;
+  const messages = [];
+
+  function openModal(modal) {
+    modal.classList.remove("hidden");
+  }
+  function closeModal(modal) {
+    modal.classList.add("hidden");
+  }
+
+  composeBtn.addEventListener("click", () => {
+    openModal(composeModal);
+    searchInput.value = "";
+    renderFriends(friends);
+  });
+
+  composeOverlay.addEventListener("click", () => closeModal(composeModal));
+  chatOverlay.addEventListener("click", () => closeModal(chatModal));
+  closeChatBtn.addEventListener("click", () => closeModal(chatModal));
+
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+    const filtered = friends.filter(friend => friend.name.toLowerCase().includes(query));
+    renderFriends(filtered);
+  });
+
+  function renderFriends(friendsArray) {
+    friendsList.innerHTML = "";
+    friendsArray.forEach(friend => {
+      const btn = document.createElement("button");
+      btn.className = "friend-button";
+      btn.innerHTML = `<img class="friend-avatar" src="${friend.image}" alt="${friend.name}"><span>${friend.name}</span>`;
+      btn.addEventListener("click", () => {
+        selectedFriend = friend;
+        closeModal(composeModal);
+        openChatModal(friend);
+      });
+      friendsList.appendChild(btn);
+    });
+  }
+
+  function openChatModal(friend) {
+    chatAvatar.src = friend.image;
+    chatAvatar.alt = friend.name;
+    chatFriendName.textContent = friend.name;
+    openModal(chatModal);
+  }
+
+  function renderMessages() {
+    messagesContainer.innerHTML = "";
+    messages.forEach(message => {
+      const msgDiv = document.createElement("div");
+      msgDiv.className = "message-container";
+      const bubble = document.createElement("div");
+      bubble.className = "message-bubble";
+      bubble.textContent = message.text;
+      msgDiv.appendChild(bubble);
+      messagesContainer.appendChild(msgDiv);
+    });
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  function handleSend() {
+    const text = chatInput.value.trim();
+    if (text !== "") {
+      messages.push({ text });
+      chatInput.value = "";
+      renderMessages();
+    }
+  }
+
+  chatInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") handleSend();
+  });
+
+  sendButton.addEventListener("click", handleSend);
+
+  if (typeof lucide !== "undefined") {
+    lucide.createIcons();
+  }
+});
+const composeBtn = document.getElementById("compose-btn")
+
+function openChat(friendId) {
+  document.getElementById("chat-modal").classList.remove("hidden")
+  composeBtn.classList.add("hidden")
+}
+
+function closeChat() {
+  document.getElementById("chat-modal").classList.add("hidden")
+  composeBtn.classList.remove("hidden")
+}
+
+// Update event listeners
+document.getElementById("close-chat-btn").addEventListener("click", closeChat)
+document.getElementById("chat-overlay").addEventListener("click", closeChat)
+

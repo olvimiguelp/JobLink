@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadatos y enlaces a estilos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../public/css/register.css">
+    <title>JobLink - Registro</title>
+</head>
+<body>
+    <!-- Mensajes de notificación -->
+    <div id="message" class="message"></div>
+    <div class="message-overlay"></div>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="/" class="logo">
+                <img src="/images/logo.jpg" alt="Logo" />
+            </a>
+        </div>
+        <div class="navbar-center">
+            <ul>
+                <li>
+                    <a href="#">
+                        <img src="/images/message.png" alt="Mensajes" />
+                        <span>ayuda</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Formulario de registro -->
+    <div class="wrapper active">
+        <span class="bg-animate"></span>
+        <span class="bg-animate2"></span>
+
+        <div class="form-box register">
+            <h2 class="animation" style="--i:17; --j:0;">Registro</h2>
+            <form id="registerForm" method="POST">
+                <!-- Campo de nombre completo -->
+                <div class="input-box animation" style="--i:18; --j:1;">
+                    <input type="text" id="registerName" name="name" required>
+                    <label>Nombre completo</label>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <!-- Campo de correo electrónico -->
+                <div class="input-box animation" style="--i:19; --j:2;">
+                    <input type="email" id="registerEmail" name="email" required>
+                    <label>Correo electrónico</label>
+                    <i class='bx bxs-envelope'></i>
+                </div>
+                <!-- Campo de contraseña -->
+                <div class="input-box animation" style="--i:20; --j:3;">
+                    <input type="password" id="registerPassword" name="password" required>
+                    <label>Contraseña</label>
+                    <i class='bx bxs-lock-alt'></i>
+                    <small>Use 6 o más caracteres con una combinación de letras y números</small>
+                </div>
+                <!-- Campo de confirmación de contraseña -->
+                <div class="input-box animation" style="--i:21; --j:4;">
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    <label>Confirmar Contraseña</label>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+
+                <!-- Aceptación de términos y condiciones -->
+                <div class="terms-group animation" style="--i:22; --j:5;">
+                    <label class="checkbox-container">
+                        <input type="checkbox" required>
+                        <span class="checkmark"></span>
+                        Acepto los términos y condiciones de JobLink
+                    </label>
+                </div>
+
+                <!-- Botón de registro -->
+                <button class="btn animation" type="submit" style="--i:23; --j:6;">Registrarse</button>
+                <div class="logreg-link animation" style="--i:24; --j:7;">
+                    <p>¿Ya tienes una cuenta? <br> <a href="/" class="login-link">Iniciar sesión</a></p>
+                </div>
+            </form>
+        </div>
+
+        <!-- Información adicional -->
+        <div class="info-text register">
+            <h2 class="animation" style="--i:17; --j:0;">¡Únete a JobLink!</h2>
+            <p class="animation" style="--i:18; --j:1">
+                Conecta con empresas y profesionales<br>
+                Encuentra oportunidades laborales exclusivas<br>
+                Desarrolla tu red profesional<br>
+                Mantente actualizado en tu industria
+            </p>
+        </div>
+    </div>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="../public/js/register.js"></script>
+</body>
+</html>
